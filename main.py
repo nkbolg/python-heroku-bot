@@ -1,7 +1,7 @@
 import telegram
 import logging
 from telegram.ext import Updater, CommandHandler
-
+import os
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -16,7 +16,7 @@ def on_start(bot, update):
     except Exception as ex:
         print(ex)
 
-token = ''
+token = os.environ['telegram-token']
 updater = Updater(token)
 dispatcher = updater.dispatcher
 dispatcher.add_handler(CommandHandler('start', on_start))
